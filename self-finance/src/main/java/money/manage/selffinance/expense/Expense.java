@@ -1,15 +1,20 @@
 package money.manage.selffinance.expense;
 
+import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "EXPENSES")
+@Data
 public class Expense {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "ID")
-    private Long id;
+    private String id;
     @Column(name = "EXPENSE_DESC")
     private String expenseDescription;
     @Column(name = "AMOUNT")
